@@ -25,18 +25,41 @@ class ProductController extends BaseController
 
     public function show()
     {
-        $product = $this->productModel->findById(1);
+        $id = $_GET["id"];
+        $product = $this->productModel->findById($id);
 
         $this->view("products.show", ["product" => $product]);
     }
 
     public function create() {}
 
-    public function store() {}
+    public function store()
+    {
+        $data = [
+            "name" => "OPPO 1",
+            "price" => 20000,
+            "image" => null,
+            "category_id" => 4
+        ];
+
+        $this->productModel->store($data);
+    }
 
     public function edit() {}
 
-    public function update() {}
+    public function update()
+    {
+        $id = $_GET["id"];
+
+        $data = [
+            "name" => "OPPO 100",
+            "price" => 20000,
+            "image" => null,
+            "category_id" => 4
+        ];
+
+        $this->productModel->updateData($id, $data);
+    }
 
     public function delete() {}
 }

@@ -10,12 +10,17 @@ class ProductModel extends BaseModel
 
     public function findById($id)
     {
-        $product = [
-            "id" => 1,
-            "name" => "Iphone"
-        ];
+        return $this->find(self::TABLE, $id);
+    }
 
-        return $product;
+    public function store($data) 
+    {
+        $this->create(self::TABLE, $data);
+    }
+
+    public function updateData($id, $data)
+    {
+        $this->update(self::TABLE, $id, $data);
     }
 
     public function delete() {}
